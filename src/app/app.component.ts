@@ -32,4 +32,19 @@ export class AppComponent {
       }
     );
   }
+
+  adicionarProduto(){
+    var produto = { nome : "" };
+
+    this.http.post(`${this.apiUrl}/produtos`,produto).subscribe(
+      resultado => {
+        console.log(resultado);
+      },
+      erro => {
+        if (erro.status == 400){
+          console.log(erro.error);
+        }
+      }
+    );
+  }
 }
