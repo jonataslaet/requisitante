@@ -61,6 +61,18 @@ export class AppComponent {
         }
       }
     );
+  }
 
+  excluirProduto(){
+    this.http.delete(`${this.apiUrl}/produtos/4`).subscribe(
+      resultado => {
+        console.log("Produto deletado com sucesso");
+      },
+      erro => {
+        if (erro.status == 404) {
+          console.log(erro.error);
+        }
+      }
+    );
   }
 }
