@@ -47,4 +47,20 @@ export class AppComponent {
       }
     );
   }
+
+  alterarProduto(){
+    var produto = { id: 1, nome : "TV 52 Polegadas"};
+
+    this.http.put(`${this.apiUrl}/produtos/1`, produto).subscribe (
+      resultado => {
+        console.log("Produto alterado com sucesso");
+      },
+      erro => {
+        if (erro.status == 404) {
+          console.log(erro.error);
+        }
+      }
+    );
+
+  }
 }
