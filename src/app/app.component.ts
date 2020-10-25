@@ -19,4 +19,17 @@ export class AppComponent {
       resultado => console.log(resultado)
     );
   }
+
+  listarProdutoPorId(){
+    this.http.get(`${this.apiUrl}/produtos/4`).subscribe(
+      resultado => {
+        console.log(resultado);
+      },
+      erro => {
+        if (erro.status == 404){
+          console.log(erro.error);
+        }
+      }
+    );
+  }
 }
